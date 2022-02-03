@@ -30,9 +30,18 @@ def _get_config() -> MutableMapping[str, object]:
         return toml.loads(toml_string)
 
 
+# Obsolete
 def get_files_directory() -> Path:
     config = _get_config()
     return Path(str(config.get("files_directory", "/mnt/usb_share")))
+
+
+def get_printer_ip() -> str:
+    ip = "192.168.256.256"
+    printer_config = _get_config().get("printer")
+    if not isinstance(printer_config, dict):
+        return ip
+    return str(printer_config.get("printer_ip", ip))
 
 
 def get_printer_display_name() -> Optional[str]:

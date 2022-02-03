@@ -18,7 +18,8 @@ files_directory = "/mnt/usb_share"
 # printer name is displayed. Uncomment this line and set it to whatever you
 # want if you want to show a name on the print status. Useful for people with
 # multiple printers running multiple instances of mariner.
-#display_name = "Elegoo Mars Pro"
+display_name = "Photon"
+printer_ip = 192.168.18.18
 
 # Serial port settings. Most of the time the default values are fine. This
 # is generally only helpful if you aren't running mariner on a Raspberry Pi
