@@ -174,7 +174,7 @@ class ChiTuPrinter:
         # return response
 
         header = f'-n { config.get_printer_ip() } g '
-        return photon.main(split(header + data))
+        return photon.main((header + data).split())
 
     def _send(self, data: str) -> str:
         # self._serial_port.write(data)
