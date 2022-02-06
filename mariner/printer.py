@@ -36,15 +36,7 @@ class ChiTuPrinter:
             timeout=0.1,
         )
 
-    def open(self) -> None:
-        self._serial_port.port = config.get_printer_serial_port()
-        self._serial_port.open()
-
-    def close(self) -> None:
-        self._serial_port.close()
-
     def __enter__(self) -> "ChiTuPrinter":
-        self.open()
         return self
 
     def __exit__(
@@ -53,7 +45,6 @@ class ChiTuPrinter:
         exc_value: Optional[BaseException],
         traceback: Optional[TracebackType],
     ) -> bool:
-        self.close()
         return False
 
     def _extract_response_with_regex(self, regex: str, data: str) -> Match[str]:
