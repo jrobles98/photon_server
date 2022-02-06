@@ -51,16 +51,8 @@ def print_status() -> str:
         # sometimes we get an unexpected response from the printer (an "ok" instead of
         # the print status we expected). due to this, we retry at most 3 times here
         # until we have a successful response. see issue #180
-        selected_file = retry(
-            printer.get_selected_file,
-            UnexpectedPrinterResponse,
-            num_retries=3,
-        )
-        print_status = retry(
-            printer.get_print_status,
-            UnexpectedPrinterResponse,
-            num_retries=3,
-        )
+        selected_file = printer.get_selected_file()
+        print_status = printer.get_print_status()
 
         if print_status.state == PrinterState.IDLE:
             progress = 0.0

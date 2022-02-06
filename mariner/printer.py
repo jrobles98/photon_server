@@ -82,7 +82,7 @@ class ChiTuPrinter:
     def get_selected_file(self) -> str:
         data = self._send_and_read("M4006")
         selected_file = str(
-            self._extract_response_with_regex("ok '([^']+)'\r\n", data).group(1)
+            self._extract_response_with_regex("ok '([^']+)'", data).group(1)
         )
         # normalize the selected file by removing the leading slash, which is
         # sometimes returned by the printer
@@ -162,7 +162,7 @@ class ChiTuPrinter:
         # self._serial_port.read(size=1024)
         # return response
 
-        header = f'-n { config.get_printer_ip() } '
+        header = f'-n { config.get_printer_ip() } g '
         return photon.main(split(header + data))
 
     def _send(self, data: str) -> str:

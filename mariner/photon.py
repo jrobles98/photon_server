@@ -777,12 +777,10 @@ def main(argv):
       exit()
 
     if cmd=='g':
-      photon_cmd_long(str(parm).upper())
-      exit()
+      return(photon_cmd(str(parm).upper()))
 
     if cmd=='G':
-      photon_cmd_long(parm)
-      exit()
+      return(photon_cmd(parm))
 
     if cmd in ('get', 'put','post','send','upload', 'rm','del', 'print','run','exec'):
       fname=parm
